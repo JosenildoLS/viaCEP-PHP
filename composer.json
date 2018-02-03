@@ -1,0 +1,35 @@
+{
+    "name": "josenildols/viacep-php",
+    "type": "library",
+    "description": "ViaCEP PHP",
+    "keywords": [
+        "josenildoLS",
+        "viacep",
+        "cep",
+        "brazil"
+    ],
+    "homepage": "https://github.com/josenildoLS",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Josenildo de Lima Silva",
+            "email": "josenildodelimasilva@gmail.com",
+            "homepage": "https://github.com/josenildols",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "~5.6|~7.0",
+        "josenildols/viacep": ""
+    },
+    "autoload": {
+        "psr-4": {
+            "JosenildoLS\\ViaCEP\\": "src"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
+}
