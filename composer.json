@@ -1,5 +1,5 @@
 {
-    "name": "josenildols/viacep",
+    "name": "josenildols/viacep-php",
     "type": "library",
     "description": "ViaCEP PHP",
     "keywords": [
@@ -24,7 +24,7 @@
     },
     "autoload": {
         "psr-4": {
-            "JosenildoLS\\ViaCEP\\": "src"
+            "JosenildoLS\\viacep-php\\": "src"
         }
     }
 }
