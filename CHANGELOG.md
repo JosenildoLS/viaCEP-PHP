@@ -6,3 +6,5 @@ Todas as alterações importantes ​​ao viacep-php serão relatadas neste arq
 
 ### Adicionado
 - Faça busca por endereços utilizando o [ViaCEP](https://viacep.com.br) REST API.
+
+

@@ -45,6 +45,7 @@ class ViaCEP {
     }
 
     public function toJson() {
+
         $json = json_encode($this->toArray());
         return $json;
     }
