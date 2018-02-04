@@ -5,113 +5,148 @@ namespace JosenildoLS;
 class ViaCEP {
 
     const URL_VIACEP = 'http://viacep.com.br/ws/';
+    const METHOD = 'json';
 
-    private $zipCode;
-    private $street;
-    private $complement;
-    private $neighborhood;
-    private $city;
-    private $state;
-    private $unity;
+    private $cep;
+    private $logradouro;
+    private $complemento;
+    private $bairro;
+    private $localidade;
+    private $uf;
+    private $unidade;
     private $ibge;
     private $gia;
 
-    /*
-     * Paramentros padrão para requisição
-     */
-    private $method = "json";
-    private $unicode = "";
-    private $callback = "";
+    public function find(string $cep = "") {
 
-    public function __construct($zipCode, $method = "", $unicode = FALSE, $callback = "") {
+        $this->setCep($cep);
 
-        $this->setZipCode($zipCode);
-        $this->setMethod($method);
-        $this->setUnicode($unicode);
-        $this->setCallback($callback);
-    }
-
-    public function __toString() {
-        return $url = self::URL_VIACEP . $this->getZipCode() . '/' . $this->getMethod() . $this->getUnicode() . $this->getCallback();
-    }
-
-    public function fill(array $attributes) {
-        if ($attributes) {
-            $this->zipCode = $attributes['cep'];
-            $this->street = $attributes['logradouro'];
-            $this->complement = $attributes['complemento'];
-            $this->neighborhood = $attributes['bairro'];
-            $this->city = $attributes['localidade'];
-            $this->state = $attributes['uf'];
-            $this->ibge = $attributes['ibge'];
-        }
-
-        return $this;
-    }
-
-    public function find() {
-
-        $url = self::URL_VIACEP . $this->getZipCode() . '/' . $this->getMethod() . $this->getUnicode() . $this->getCallback();
+        $url = self::URL_VIACEP . $this->getCep() . '/' . self::METHOD;
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
         $response = curl_exec($ch);
         curl_close($ch);
 
-        if ($this->getCallback() === "" && substr($this->getMethod(), 0, 4) === "json") {
-            $data = json_decode($response, true);
-            if (array_key_exists('erro', $data) && $data['erro'] === true) {
-                return $this->address;
-            }
+        $data = json_decode($response, true);
+
+        if ($data !== null && !array_key_exists('erro', $data)) {
             return $this->fill($data);
         }
-
-        $this->fill($this->jsonp_decode($response, true));
-
-        return $response;
     }
 
-    private function jsonp_decode($jsonp, $assoc = false) { // PHP 5.3 adds depth as third parameter to json_decode
-        if ($jsonp[0] !== '[' && $jsonp[0] !== '{') { // we have JSONP
-            $jsonp = substr($jsonp, strpos($jsonp, '('));
+    private function fill(array $attributes) {
+
+        foreach ($attributes as $key => $value) {
+            $this->{"set" . ucfirst($key)}($value);
         }
-        return json_decode(trim($jsonp, '();'), $assoc);
+
+        return $this;
     }
 
     public function toJson() {
-        return json_encode(get_object_vars($this));
+        $json = json_encode($this->toArray());
+        return $json;
     }
 
-    public function toArray() {
-        return get_object_vars($this);
+    public function toArray(): array {
+        $array = get_object_vars($this);
+        return $array;
     }
 
-    public function getZipCode() {
-        return $this->zipCode;
+    public function toCSV(string $caminho = "") {
+
+        $data = $this->toArray();
+        $headers = array();
+        $arquivo = $caminho . DIRECTORY_SEPARATOR . $this->getCep() . ".csv";
+
+        if (!is_dir($caminho)) {
+            mkdir($caminho);
+        }
+
+        foreach ($data as $key => $value) {
+            array_push($headers, $key);
+        }
+
+
+        // Vai criar o arquivo caso não exista e abri-lo no modo de escrita, apagando todo o conteudo no caso de ja existir
+        $file = fopen($arquivo, "w+");
+        fwrite($file, implode(",", $headers) . "\r\n");
+        fwrite($file, implode(",", $data) . "\r\n");
+        fclose($file);
+
+        return $arquivo;
     }
 
-    public function getStreet() {
-        return $this->street;
+    public function toXML(string $caminho = "") {
+        $data = $this->toArray();
+        $arquivo = $caminho . DIRECTORY_SEPARATOR . $this->getCep() . ".xml";
+
+        if (!is_dir($caminho)) {
+            mkdir($caminho);
+        }
+
+        // Receberá todos os dados do XML
+        $xml = '<?xml version="1.0" encoding="UTF-8"?>';
+
+        // A raiz do meu documento XML
+        $xml .= "<xmlcep>\r\n";
+        foreach ($data as $key => $value) {
+            $xml .= "\t<$key>" . $value . "</$key>\r\n";
+        }
+        $xml .= "</xmlcep>\r\n";
+
+        // Escreve o arquivo
+        $file = fopen($arquivo, 'w+');
+        fwrite($file, $xml);
+        fclose($file);
+
+        return $arquivo;
     }
 
-    public function getComplement() {
+    public function toPiped() {
+        $data = $this->toArray();
+        $headers = array();
+
+        foreach ($data as $key => $value) {
+            array_push($headers, $key . ":" . $value);
+        }
+        $piped = implode("|", $headers);
+
+        return $piped;
+    }
+
+    public function toQuerty() {
+        $data = $this->toArray();
+        return http_build_query($data);
+    }
+
+    public function getCep() {
+        return $this->cep;
+    }
+
+    public function getLogradouro() {
+        return $this->logradouro;
+    }
+
+    public function getComplement0() {
         return $this->complement;
     }
 
-    public function getNeighborhood() {
-        return $this->neighborhood;
+    public function getBairro() {
+        return $this->bairro;
     }
 
-    public function getCity() {
-        return $this->city;
+    public function getLocalidade() {
+        return $this->localidade;
     }
 
-    public function getState() {
-        return $this->state;
+    public function getUf() {
+        return $this->uf;
     }
 
-    public function getUnity() {
-        return $this->unity;
+    public function getUnidade() {
+        return $this->unidade;
     }
 
     public function getIbge() {
@@ -122,67 +157,43 @@ class ViaCEP {
         return $this->gia;
     }
 
-    public function getMethod() {
-        return $this->method;
+    private function setCep($cep) {
+
+        // retira espacos em branco e mantem apenas numeros
+        $cepClean = trim(preg_replace("/[^0-9]/", "", $cep));
+
+        $this->cep = $cep;
     }
 
-    public function getUnicode() {
-        return $this->unicode;
+    private function setLogradouro(string $logradouro) {
+        $this->logradouro = $logradouro;
     }
 
-    public function getCallback() {
-        return $this->callback;
+    private function setComplemento(string $complemento) {
+        $this->complemento = $complemento;
     }
 
-    public function setMethod($method) {
-        $this->method = $method . '/';
+    private function setBairro(string $bairro) {
+        $this->bairro = $bairro;
     }
 
-    public function setUnicode($unicode) {
-        if (substr($this->getMethod(), 0, 4) === "json" && $unicode === true) {
-            $this->unicode = 'unicode/';
-        }
+    private function setLocalidade(string $localidade) {
+        $this->localidade = $localidade;
     }
 
-    public function setCallback($callback) {
-        if (!empty($callback) && substr($this->getMethod(), 0, 4) === "json") {
-            $this->callback = '?callback=' . $callback;
-        }
+    private function setUf(string $uf) {
+        $this->uf = $uf;
     }
 
-    private function setZipCode($zipCode) {
-        $this->zipCode = $zipCode;
+    private function setUnidade(string $unidade) {
+        $this->unidade = $unidade;
     }
 
-    private function setStreet($street) {
-        $this->street = $street;
-    }
-
-    private function setComplement($complement) {
-        $this->complement = $complement;
-    }
-
-    private function setNeighborhood($neighborhood) {
-        $this->neighborhood = $neighborhood;
-    }
-
-    private function setCity($city) {
-        $this->city = $city;
-    }
-
-    private function setState($state) {
-        $this->state = $state;
-    }
-
-    private function setUnity($unity) {
-        $this->unity = $unity;
-    }
-
-    private function setIbge($ibge) {
+    private function setIbge(string $ibge) {
         $this->ibge = $ibge;
     }
 
-    private function setGia($gia) {
+    private function setGia(string $gia) {
         $this->gia = $gia;
     }
 

@@ -1,5 +1,8 @@
 # viaCEP PHP
-[![ico-license](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square)](LICENSE.md)
+[![GitHub license](https://img.shields.io/github/license/JosenildoLS/viaCEP.svg?style=flat-square)](https://github.com/JosenildoLS/viaCEP/blob/master/LICENSE)
+[![GitHub forks](https://img.shields.io/github/forks/JosenildoLS/viaCEP.svg?style=flat-square)](https://github.com/JosenildoLS/viaCEP/network)
+[![GitHub stars](https://img.shields.io/github/stars/JosenildoLS/viaCEP.svg?style=flat-square)](https://github.com/JosenildoLS/viaCEP/stargazers)
+[![Twitter](https://img.shields.io/twitter/url/https/github.com/JosenildoLS/viaCEP.svg?style=social&style=flat-square)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2FJosenildoLS%2FviaCEP)
 
 Faça uma busca por endereços utilizando o [ViaCEP](https://viacep.com.br) REST API.
 
