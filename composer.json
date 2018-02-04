@@ -6,7 +6,8 @@
         "josenildoLS",
         "viacep",
         "cep",
-        "brazil"
+        "brazil",
+        "zipcode"
     ],
     "homepage": "https://github.com/josenildoLS",
     "license": "MIT",
