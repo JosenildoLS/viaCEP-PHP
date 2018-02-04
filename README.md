@@ -1,5 +1,6 @@
 # viaCEP PHP
 [![GitHub license](https://img.shields.io/github/license/JosenildoLS/viaCEP.svg?style=flat-square)](https://github.com/JosenildoLS/viaCEP/blob/master/LICENSE)
+[![GitHub issues](https://img.shields.io/github/issues/JosenildoLS/viaCEP.svg?style=flat-square)](https://github.com/JosenildoLS/viaCEP/issues)
 [![GitHub forks](https://img.shields.io/github/forks/JosenildoLS/viaCEP.svg?style=flat-square)](https://github.com/JosenildoLS/viaCEP/network)
 [![GitHub stars](https://img.shields.io/github/stars/JosenildoLS/viaCEP.svg?style=flat-square)](https://github.com/JosenildoLS/viaCEP/stargazers)
 [![Twitter](https://img.shields.io/twitter/url/https/github.com/JosenildoLS/viaCEP.svg?style=social&style=flat-square)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2FJosenildoLS%2FviaCEP)
