@@ -1,9 +1,9 @@
 # viaCEP PHP
-[![GitHub license](https://img.shields.io/github/license/JosenildoLS/viaCEP.svg?style=flat-square)](https://github.com/JosenildoLS/viaCEP/blob/master/LICENSE)
-[![GitHub issues](https://img.shields.io/github/issues/JosenildoLS/viaCEP.svg?style=flat-square)](https://github.com/JosenildoLS/viaCEP/issues)
-[![GitHub forks](https://img.shields.io/github/forks/JosenildoLS/viaCEP.svg?style=flat-square)](https://github.com/JosenildoLS/viaCEP/network)
-[![GitHub stars](https://img.shields.io/github/stars/JosenildoLS/viaCEP.svg?style=flat-square)](https://github.com/JosenildoLS/viaCEP/stargazers)
-[![Twitter](https://img.shields.io/twitter/url/https/github.com/JosenildoLS/viaCEP.svg?style=social&style=flat-square)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2FJosenildoLS%2FviaCEP)
+[![GitHub license](https://img.shields.io/github/license/JosenildoLS/viaCEP-PHP.svg?style=flat-square)](https://github.com/JosenildoLS/viaCEP-PHP/blob/master/LICENSE)
+[![GitHub issues](https://img.shields.io/github/issues/JosenildoLS/viaCEP-PHP.svg?style=flat-square)](https://github.com/JosenildoLS/viaCEP-PHP/issues)
+[![GitHub forks](https://img.shields.io/github/forks/JosenildoLS/viaCEP-PHP.svg?style=flat-square)](https://github.com/JosenildoLS/viaCEP-PHP/network)
+[![GitHub stars](https://img.shields.io/github/stars/JosenildoLS/viaCEP-PHP.svg?style=flat-square)](https://github.com/JosenildoLS/viaCEP-PHP/stargazers)
+[![Twitter](https://img.shields.io/twitter/url/https/github.com/JosenildoLS/viaCEP-PHP.svg?style=social&style=flat-square)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2FJosenildoLS%2FviaCEP-PHP)
 
 Faça busca por endereços utilizando o [ViaCEP](https://viacep.com.br) REST API.
 
