@@ -1,7 +1,5 @@
-# viaCEP
-[![Software License][ico-license]](LICENSE.md)
-[![Github file size]
-[![PHP from Packagist]
+# viaCEP PHP
+[![ico-license](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square)](LICENSE.md)
 
 Faça uma busca por endereços utilizando o [ViaCEP](https://viacep.com.br) REST API.
 
@@ -139,8 +137,3 @@ Caso encontre algum problema relacionado a segurança envie um email para joseni
 
 Sobre a licença MIT (MIT). Por favor, veja [License File](LICENSE.md) para mais informações.
 
-
-[![ico-license](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square)]()
-[![Github file size](https://img.shields.io/github/size/webcaetano/craft/build/phaser-craft.min.js.svg?style=flat-square)]()
-[![PHP from Packagist](https://img.shields.io/packagist/php-v/symfony/symfony.svg?style=flat-square)](~5.6|~7.0)
-[link-author]: https://github.com/josenildoLS
