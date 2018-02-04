@@ -101,7 +101,7 @@ cep=01001-000&logradouro=Pra%C3%A7a+da+S%C3%A9&complemento=lado+%C3%ADmpar&bairr
 $cep->toXML("caminho");
 
 /*
-O resultado deverá ser algo assim, devo resaltar que o caminho é opcional:
+O resultado deverá ser algo assim, devo ressaltar que o caminho é opcional:
 
 <?xml version="1.0" encoding="UTF-8"?><xmlcep>
 	<cep>01001-000</cep>
@@ -124,17 +124,13 @@ O resultado deverá ser algo assim, devo resaltar que o caminho é opcional:
 $cep->toCSV("caminho");
 
 /*
-O resultado deverá ser algo assim, devo resaltar que o caminho é opcional:
+O resultado deverá ser algo assim, devo ressaltar que o caminho é opcional:
 
 cep,logradouro,complemento,bairro,localidade,uf,unidade,ibge,gia
 01001-000,Praça da Sé,lado ímpar,Sé,São Paulo,SP,,3550308,1004
 
 */
 ```
-
-## Segurança
-
-Caso encontre algum problema relacionado a segurança envie um email para josenildodelimasilva@gmail.com instead.
 
 ## Licença
 
