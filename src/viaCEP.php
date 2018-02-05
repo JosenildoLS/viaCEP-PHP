@@ -31,7 +31,7 @@ class ViaCEP {
         $data = json_decode($response, true);
 
         if ($data !== null && !array_key_exists('erro', $data)) {
-            return $this->fill($data);
+            $this->fill($data);
         }
     }
 
@@ -41,7 +41,6 @@ class ViaCEP {
             $this->{"set" . ucfirst($key)}($value);
         }
 
-        return $this;
     }
 
     public function toJson() {
@@ -163,7 +162,7 @@ class ViaCEP {
         // retira espacos em branco e mantem apenas numeros
         $cepClean = trim(preg_replace("/[^0-9]/", "", $cep));
 
-        $this->cep = $cep;
+        $this->cep = $cepClean;
     }
 
     private function setLogradouro(string $logradouro) {
