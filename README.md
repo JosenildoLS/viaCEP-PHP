@@ -5,14 +5,14 @@
 [![GitHub stars](https://img.shields.io/github/stars/JosenildoLS/viaCEP-PHP.svg?style=flat-square)](https://github.com/JosenildoLS/viaCEP-PHP/stargazers)
 [![Twitter](https://img.shields.io/twitter/url/https/github.com/JosenildoLS/viaCEP-PHP.svg?style=social&style=flat-square)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2FJosenildoLS%2FviaCEP-PHP)
 
-Faça busca por endereços utilizando o [ViaCEP](https://viacep.com.br) REST API.
+Faça busca por endereços do Brasil utilizando o [ViaCEP](https://viacep.com.br) REST API.
 
 ## Instalação
 
 Via Composer
 
 ``` bash
-$ composer require josenildols/viacep
+$ composer require josenildols/viacep-php
 ```
 
 ## Como instanciar
@@ -96,15 +96,16 @@ cep=01001-000&logradouro=Pra%C3%A7a+da+S%C3%A9&complemento=lado+%C3%ADmpar&bairr
 */
 ```
 
-### Salvar em XML
+### Salvar em .XML
 
 ``` php
-$cep->toXML("caminho");
+$cep->toXML("nome_da_pasta");
 
 /*
-O resultado deverá ser algo assim, devo ressaltar que o caminho é opcional:
+O resultado deverá ser algo assim, devo ressaltar que o nome_da_pasta é opcional:
 
-<?xml version="1.0" encoding="UTF-8"?><xmlcep>
+<?xml version="1.0" encoding="UTF-8"?>
+<xmlcep>
 	<cep>01001-000</cep>
 	<logradouro>Praça da Sé</logradouro>
 	<complemento>lado ímpar</complemento>
@@ -119,13 +120,13 @@ O resultado deverá ser algo assim, devo ressaltar que o caminho é opcional:
 */
 ```
 
-### Salvar em CVS
+### Salvar em .CSV
 
 ``` php
-$cep->toCSV("caminho");
+$cep->toCSV("nome_da_pasta");
 
 /*
-O resultado deverá ser algo assim, devo ressaltar que o caminho é opcional:
+O resultado deverá ser algo assim, devo ressaltar que o nome_da_pastaé opcional:
 
 cep,logradouro,complemento,bairro,localidade,uf,unidade,ibge,gia
 01001-000,Praça da Sé,lado ímpar,Sé,São Paulo,SP,,3550308,1004
