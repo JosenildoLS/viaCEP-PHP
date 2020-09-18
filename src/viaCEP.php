@@ -18,6 +18,8 @@ class ViaCEP
     private $ibge;
     private $gia;
     private $ddd;
+    private $siafi;
+
 
     public function find(string $cep = "")
     {
@@ -130,6 +132,11 @@ class ViaCEP
         return http_build_query($data);
     }
 
+    public function getSiafi()
+    {
+        return $this->siafi;
+    }
+
     public function getDdd()
     {
         return $this->ddd;
@@ -178,6 +185,11 @@ class ViaCEP
     public function getGia()
     {
         return $this->gia;
+    }
+
+    private function setSiafi(string $siafi)
+    {
+        $this->siafi = $siafi;
     }
 
     private function setDdd(string $ddd)
